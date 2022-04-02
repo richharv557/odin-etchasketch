@@ -1,10 +1,16 @@
+//delaring this as a global since it never changes
 const gridContainer = document.querySelector('#grid-container')
-
+const button = document.querySelector('#btn')
+// initialize page per prompt
 createGrid(16);
 
+button.addEventListener('click', () => {
+    clearGrid(gridContainer);
+    createGrid(userPopUp());
+})
 
-function createGrid(size) {
 // ID the container, create a column, append 16 divs, append to container
+function createGrid(size) {
     for (let i = 0; i < size; i++){
         const gridColumn = document.createElement('div');
         gridColumn.classList.add('column');
@@ -16,12 +22,14 @@ function createGrid(size) {
     }
 }
 
+// clear grid function to remove all children from #grid-container
 function clearGrid(parent) {
     while (parent.firstChild){
         parent.removeChild(parent.firstChild);
     }
 }
 
+// validated popup that only accepts 0 - 100 as inputs
 function userPopUp() {
     let input = prompt("Enter # of squares you want for the x & y axis. Limit 100.");
         while (input == null || input < 0 || input > 100 || isNaN(input)) {
