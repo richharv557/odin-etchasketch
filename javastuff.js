@@ -1,6 +1,7 @@
 //delaring this as a global since it never changes
 const gridContainer = document.querySelector('#grid-container')
 const button = document.querySelector('#btn')
+
 // initialize page per prompt
 createGrid(16);
 
@@ -9,7 +10,7 @@ button.addEventListener('click', () => {
     createGrid(userPopUp());
 })
 
-// ID the container, create a column, append 16 divs, append to container
+// ID the container, create a column, append 16 divs with class .grid and add event listener as created, append to container
 function createGrid(size) {
     for (let i = 0; i < size; i++){
         const gridColumn = document.createElement('div');
@@ -17,6 +18,9 @@ function createGrid(size) {
         for (let i = 0; i < size; i++) {
             const gridItem = document.createElement('div');
             gridItem.classList.add('grid');
+            gridItem.addEventListener('mouseover', () => {
+                gridItem.style.background = `black`;
+            })
             gridColumn.appendChild(gridItem);
         } gridContainer.appendChild(gridColumn);
     }
