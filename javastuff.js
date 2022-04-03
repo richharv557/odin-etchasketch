@@ -45,5 +45,6 @@ function userPopUp() {
   let input = prompt("Enter # of squares you want for the x & y axis. Limit 100.");
     while (input == null || input < 0 || input > 100 || isNaN(input)) {
       input = prompt("Invalid. Enter # of squares you want for the x & y axis. Limit 100.");
-    } return input;
+    } 
+    return input;
 }
